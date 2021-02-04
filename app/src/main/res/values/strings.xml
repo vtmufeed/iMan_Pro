@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Invento</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="array_trans_types">
+        <item>Transfer</item>
+        <item>Return</item>
+    </string-array>
+    <string-array name="lbl_type">
+        <item>BARCODE LABEL WITH PRICE</item>
+        <item>BARCODE LABEL WITHOUT PRICE</item>
+        <item>SHELF LABEL</item>
+    </string-array>
+    <string-array name="locs">
+        <item>701 - GRAND MALL WLL</item>
+        <item>702 - GRAND EXPRESS EZDAN MALL</item>
+        <item>703 - GRAND EXPRESS PLAZA MALL 2</item>
+        <item>704 - GRAND EXPRESS PLAZA MALL 3</item>
+    </string-array>
+    <string-array name="off_upload_modes">
+        <item>QR Code</item>
+        <item>Manual</item>
+    </string-array>
+</resources>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/form_background"
+    android:orientation="vertical"
+    tools:context=".LabelSelectPrinter">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="Select Printer"
+                android:layout_gravity="center_vertical"
+                android:textColor="#063844"
+                android:textStyle="bold"
+                android:layout_marginRight="20dp"
+                android:textSize="35sp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:text="Printer"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+        <LinearLayout
+            android:background="@drawable/form_input_field_sm"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_height="wrap_content">
+        <Spinner
+            android:minHeight="40dp"
+            android:id="@+id/spinner_printer"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:text="Label Type"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:background="@drawable/form_input_field_sm"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_height="wrap_content">
+            <Spinner
+                android:minHeight="40dp"
+                android:id="@+id/spinner_lbl_type"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent" />
+        </LinearLayout>
+        <ProgressBar
+            android:layout_gravity="center"
+            android:id="@+id/progressBar2"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Ed_qty"
+            android:layout_centerHorizontal="true"
+            android:progressTint="@android:color/holo_red_dark"
+            android:visibility="invisible" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="10"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center|center_vertical"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:background="@drawable/button_bottom"
+                android:drawableTop="@drawable/next"
+                android:padding="5dp"
+                android:drawableTint="@android:color/white"
+                android:text="Next"
+                android:onClick="nextClicked"
+                android:layout_marginBottom="5dp"
+                android:textColor="@android:color/white"
+                android:textSize="10sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

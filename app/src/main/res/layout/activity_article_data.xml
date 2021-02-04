@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/form_background"
+    android:layout_height="match_parent"
+    tools:context=".ArticleData">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_weight="10"
+                android:layout_height="400dp">
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_marginTop="12dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/txt_data_barcode"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/form_input_field_sm"
+                            android:hint="Scan Barcode"
+                            android:inputType="number"
+                            android:minHeight="40dp"
+                            android:text=""
+                            android:textAlignment="center" />
+
+                        <ImageButton
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginRight="5dp"
+                            android:background="@drawable/button_bottom"
+                            android:onClick="clearAll"
+                            android:padding="7dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/clear_white" />
+
+                        <ImageButton
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginRight="5dp"
+                            android:background="@drawable/button_bottom"
+                            android:onClick="openCamera"
+                            android:padding="10dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/camera" />
+
+                        <ImageButton
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginRight="5dp"
+                            android:background="@drawable/button_bottom"
+                            android:onClick="openQrCamera"
+                            android:padding="10dp"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/qr" />
+                    </LinearLayout>
+            <LinearLayout
+                android:visibility="invisible"
+                android:id="@+id/dataScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:textSize="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="#4C4C4C"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/didact_gothic"
+                    android:text="Article Info"/>
+                <LinearLayout
+                    android:id="@+id/layout_art_data"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="fill_parent"
+                    android:background="@drawable/card_art_data"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content">
+                        <TextView
+                            android:fontFamily="@font/didact_gothic"
+                            android:layout_width="wrap_content"
+                            android:text="Article Code:"
+                            android:textSize="15dp"
+                            android:padding="10dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:fontFamily="@font/didact_gothic"
+                            android:id="@+id/txt_data_prod"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:textStyle="bold"
+                            android:textSize="15dp"
+                            android:layout_weight="1"
+                            android:text=""
+                            android:textColor="#063844" />
+                        <TextView
+                            android:fontFamily="@font/didact_gothic"
+                            android:layout_width="wrap_content"
+                            android:text="SU:"
+                            android:padding="10dp"
+                            android:textSize="15dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:fontFamily="@font/didact_gothic"
+                            android:id="@+id/txt_data_su"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:layout_weight="1"
+                            android:text=""
+                            android:textColor="#063844" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content">
+                        <TextView
+                            android:fontFamily="@font/didact_gothic"
+                            android:layout_width="wrap_content"
+                            android:text="Description: "
+                            android:textSize="15dp"
+                            android:padding="10dp"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:fontFamily="@font/didact_gothic"
+                            android:id="@+id/txt_data_desc"
+                            android:textSize="15dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:textStyle="bold"
+                            android:text=""
+                            android:textColor="#063844" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content">
+                        <TextView
+                            android:fontFamily="@font/didact_gothic"
+                            android:layout_width="wrap_content"
+                            android:text="Stock Unit:   "
+                            android:textSize="15dp"
+                            android:layout_weight="1"
+                            android:padding="10dp"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:fontFamily="@font/didact_gothic"
+                            android:id="@+id/txt_data_stock_unit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15dp"
+                            android:padding="10dp"
+                            android:layout_weight="1"
+                            android:textStyle="bold"
+                            android:text=""
+                            android:textColor="#063844" />
+                        <TextView
+                            android:fontFamily="@font/didact_gothic"
+                            android:layout_width="wrap_content"
+                            android:text="Conv:   "
+                            android:layout_weight="1"
+                            android:textSize="15dp"
+                            android:padding="10dp"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:fontFamily="@font/didact_gothic"
+                            android:id="@+id/txt_data_conv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15dp"
+                            android:padding="10dp"
+                            android:textStyle="bold"
+                            android:layout_weight="1"
+                            android:text=""
+                            android:textColor="#063844" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content">
+                        <TextView
+                            android:fontFamily="@font/didact_gothic"
+                            android:layout_width="wrap_content"
+                            android:text="Category:     "
+                            android:textSize="15dp"
+                            android:padding="10dp"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:fontFamily="@font/didact_gothic"
+                            android:id="@+id/txt_data_cat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:padding="10dp"
+                            android:text=""
+                            android:textColor="#063844" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content">
+                        <TextView
+                            android:fontFamily="@font/didact_gothic"
+                            android:layout_width="wrap_content"
+                            android:text="RSP:     "
+                            android:textSize="15dp"
+                            android:layout_weight="1"
+                            android:padding="10dp"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/txt_data_rsp"
+                            android:fontFamily="@font/didact_gothic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:textStyle="bold"
+                            android:textSize="15dp"
+                            android:layout_weight="2"
+                            android:text=""
+                            android:textColor="#063844" />
+                        <TextView
+                            android:fontFamily="@font/didact_gothic"
+                            android:layout_width="wrap_content"
+                            android:text="Unit Cost:     "
+                            android:layout_weight="1"
+                            android:padding="10dp"
+                            android:textSize="15dp"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:fontFamily="@font/didact_gothic"
+                            android:id="@+id/txt_data_cost"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:layout_weight="2"
+                            android:text=""
+                            android:textColor="#063844" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content">
+                        <TextView
+                            android:fontFamily="@font/didact_gothic"
+                            android:layout_width="wrap_content"
+                            android:text="Last Supplier:     "
+                            android:textSize="15dp"
+                            android:layout_weight="1"
+                            android:padding="10dp"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:fontFamily="@font/didact_gothic"
+                            android:id="@+id/txt_lst_supplier"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:textStyle="bold"
+                            android:textSize="15dp"
+                            android:layout_weight="2"
+                            android:text=""
+                            android:textColor="#063844" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content">
+                        <TextView
+                            android:fontFamily="@font/didact_gothic"
+                            android:layout_width="wrap_content"
+                            android:text="Last Purchase Date:     "
+                            android:textSize="15dp"
+                            android:layout_weight="1"
+                            android:padding="10dp"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:fontFamily="@font/didact_gothic"
+                            android:id="@+id/txt_lst_supp_dt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:textStyle="bold"
+                            android:textSize="15dp"
+                            android:layout_weight="2"
+                            android:text=""
+                            android:textColor="#063844" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content">
+                        <TextView
+                            android:fontFamily="@font/didact_gothic"
+                            android:layout_width="wrap_content"
+                            android:text="Product Exist in Excel:     "
+                            android:textSize="15dp"
+                            android:layout_weight="1"
+                            android:padding="10dp"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:fontFamily="@font/didact_gothic"
+                            android:id="@+id/txt_excel_exist"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:textStyle="bold"
+                            android:textSize="15dp"
+                            android:layout_weight="2"
+                            android:text=""
+                            android:textColor="#063844" />
+                    </LinearLayout>
+                </LinearLayout>
+                <TextView
+                    android:textSize="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="#4C4C4C"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/didact_gothic"
+                    android:text="Selling Unit"/>
+                    <LinearLayout
+                        android:id="@+id/layout_stock"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:visibility="gone"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_width="match_parent"
+                            android:orientation="horizontal"
+                            android:background="@drawable/card_art_data_row"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:fontFamily="@font/didact_gothic"
+                                android:gravity="center_vertical|center_horizontal"
+                                android:textSize="20sp"
+                                android:text="0"
+                                android:textColor="#ffffff"
+                                android:layout_weight=".2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"/>
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_height="match_parent">
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_height="match_parent">
+
+                                <TextView
+                                    android:padding="10dp"
+                                    android:fontFamily="@font/didact_gothic"
+                                    android:textColor="#FACD2B"
+                                    android:maxWidth="200dp"
+                                    android:textSize="15sp"
+                                    android:text="MABROOK FACIAL TISSUE 200S 2PLY"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"/>
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_marginLeft="10dp"
+                                        android:fontFamily="@font/didact_gothic"
+                                        android:textColor="#ffffff"
+                                        android:maxWidth="200dp"
+                                        android:textSize="10sp"
+                                        android:text="QAR"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"/>
+                                    <TextView
+                                        android:layout_marginLeft="2dp"
+                                        android:fontFamily="@font/didact_gothic"
+                                        android:textColor="#ffffff"
+                                        android:maxWidth="200dp"
+                                        android:textSize="14sp"
+                                        android:text="4.50"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"/>
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:layout_marginLeft="10dp"
+                                        android:fontFamily="@font/didact_gothic"
+                                        android:textColor="#ffffff"
+                                        android:maxWidth="200dp"
+                                        android:textSize="10sp"
+                                        android:text="Today Sale "
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"/>
+                                    <TextView
+                                        android:layout_marginLeft="2dp"
+                                        android:fontFamily="@font/didact_gothic"
+                                        android:textColor="#ffffff"
+                                        android:maxWidth="200dp"
+                                        android:textSize="14sp"
+                                        android:text="450 Pcs"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"/>
+                                </LinearLayout>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:background="#FFFFFF"
+                                style="@style/Divider"
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent" />
+                            <LinearLayout
+                                android:layout_marginLeft="5dp"
+                                android:layout_weight=".5"
+                                android:orientation="vertical"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent">
+
+                                <LinearLayout
+                                    android:padding="5dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_weight="1"
+                                    android:orientation="horizontal"
+                                    android:layout_height="wrap_content">
+
+                                    <TextView
+                                        android:gravity="center_horizontal"
+                                        android:fontFamily="@font/didact_gothic"
+                                        android:layout_weight="1"
+                                        android:text="Conv"
+                                        android:textColor="#9F9F9F"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"/>
+                                    <TextView
+                                        android:gravity="center_horizontal"
+                                        android:layout_weight="1"
+                                        android:textColor="#B8B8B8"
+                                        android:text="Outlet Stock"
+                                        android:fontFamily="@font/didact_gothic"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"/>
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_weight="1"
+                                    android:orientation="horizontal"
+                                    android:layout_height="wrap_content">
+
+                                    <TextView
+                                        android:gravity="center_horizontal"
+                                        android:layout_weight="1"
+                                        android:text="1"
+                                        android:textColor="#ffffff"
+                                        android:fontFamily="@font/didact_gothic"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"/>
+                                    <TextView
+                                        android:gravity="center_horizontal"
+                                        android:layout_weight="1"
+                                        android:text="42"
+                                        android:textColor="#ffffff"
+                                        android:fontFamily="@font/didact_gothic"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"/>
+                                </LinearLayout>
+                                <LinearLayout
+                                    style="@style/Divider_Horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp" />
+                                <LinearLayout
+                                    android:padding="5dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_weight="1"
+                                    android:orientation="horizontal"
+                                    android:layout_height="wrap_content">
+
+                                    <TextView
+                                        android:layout_weight="1"
+                                        android:text="WH1"
+                                        android:textColor="#B8B8B8"
+                                        android:fontFamily="@font/didact_gothic"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"/>
+                                    <TextView
+                                        android:layout_weight="1"
+                                        android:text="424"
+                                        android:textColor="#B8B8B8"
+                                        android:fontFamily="@font/didact_gothic"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"/>
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:padding="5dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_weight="1"
+                                    android:orientation="horizontal"
+                                    android:layout_height="wrap_content">
+
+                                    <TextView
+                                        android:layout_weight="1"
+                                        android:text="WH2"
+                                        android:textColor="#ffffff"
+                                        android:fontFamily="@font/didact_gothic"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"/>
+                                    <TextView
+                                        android:layout_weight="1"
+                                        android:text="842"
+                                        android:textColor="#ffffff"
+                                        android:fontFamily="@font/didact_gothic"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"/>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                <TextView
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="#4C4C4C"
+                    android:fontFamily="@font/didact_gothic"
+                    android:text="Logistic Unit"/>
+                    <LinearLayout
+                        android:id="@+id/layout_suppplier"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/card_art_data"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:orientation="vertical">
+                    </LinearLayout>
+                </LinearLayout>
+        </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+</android.support.constraint.ConstraintLayout>

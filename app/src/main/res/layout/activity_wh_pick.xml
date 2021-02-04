@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/form_background"
+    tools:context=".Wh_pick">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/lbl_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="20dp"
+                    android:text="Customer Order"
+                    android:textColor="#063844"
+                    android:textSize="35sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:textSize="15sp"
+                        android:layout_width="wrap_content"
+                        android:text="Ordering\nSite"
+                        android:gravity="center"
+                        android:lines="2"
+                        android:layout_weight="0"
+                        android:layout_gravity="center_vertical"
+                        android:layout_height="wrap_content"/>
+                    <LinearLayout
+                        android:background="@drawable/form_input_field_sm"
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="32dp"
+                        android:layout_height="match_parent">
+                    <Spinner
+                        android:layout_weight="1"
+                        android:id="@+id/spinner_order_site"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:text="From" />
+                        <EditText
+                            android:textSize="15sp"
+                            android:clickable="true"
+                            android:focusable="false"
+                            android:textColor="#000000"
+                            android:minWidth="100dp"
+                            android:padding="10dp"
+                            android:onClick="showDateDialogFrm"
+                            android:id="@+id/txt_date_from"
+                            android:layout_height="wrap_content"
+                            android:minHeight="40dp"
+                            android:layout_width="wrap_content"
+                            android:inputType="textMultiLine"
+                            android:layout_marginLeft="22dp"
+                            android:background="@drawable/form_input_field_sm"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="5dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="15sp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:text="To" />
+                        <EditText
+                            android:textSize="15sp"
+                            android:clickable="true"
+                            android:focusable="false"
+                            android:textColor="#000000"
+                            android:minWidth="100dp"
+                            android:padding="10dp"
+                            android:onClick="showDateDialogTo"
+                            android:id="@+id/txt_date_to"
+                            android:layout_height="wrap_content"
+                            android:minHeight="40dp"
+                            android:layout_width="wrap_content"
+                            android:inputType="textMultiLine"
+                            android:layout_marginLeft="22dp"
+                            android:background="@drawable/form_input_field_sm"/>
+                    </LinearLayout>
+                    <ImageButton
+                        android:layout_gravity="bottom"
+                        android:layout_width="40dp"
+                        android:background="@drawable/button_bottom"
+                        android:src="@drawable/pick_icon_search"
+                        android:layout_height="40dp"
+                        android:padding="5dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentLeft="true"
+                        android:onClick="loadOrderNos"
+                        android:scaleType="fitCenter"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:textSize="15sp"
+                        android:layout_width="wrap_content"
+                        android:text="Customer\nOrder No"
+                        android:gravity="center"
+                        android:lines="2"
+                        android:layout_weight="0"
+                        android:layout_gravity="center_vertical"
+                        android:layout_height="wrap_content"/>
+                    <LinearLayout
+                        android:background="@drawable/form_input_field_sm"
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginLeft="55dp"
+                        android:layout_height="match_parent">
+                        <Spinner
+                            android:padding="10dp"
+                            android:id="@+id/spinner_orders"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+                    </LinearLayout>
+                    </LinearLayout>
+                <LinearLayout
+                    android:visibility="invisible"
+                    android:id="@+id/layout_order_data"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="fill_parent"
+                    android:background="@drawable/card_art_data"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Warehouse: "
+                            android:textSize="12dp"
+                            android:padding="6dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/txt_data_wh"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="6dp"
+                            android:textStyle="bold"
+                            android:textSize="13dp"
+                            android:layout_weight="1"
+                            android:text=""
+                            android:textColor="#063844" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Site: "
+                            android:textSize="12dp"
+                            android:padding="6dp"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/txt_data_site"
+                            android:textSize="13dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="6dp"
+                            android:textStyle="bold"
+                            android:text=""
+                            android:textColor="#063844" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Order Date: "
+                            android:textSize="12dp"
+                            android:layout_weight="1"
+                            android:padding="6dp"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/txt_data_ord_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13dp"
+                            android:padding="6dp"
+                            android:layout_weight="1"
+                            android:textStyle="bold"
+                            android:text=""
+                            android:textColor="#063844" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Deliv Date: "
+                            android:textSize="12dp"
+                            android:layout_weight="1"
+                            android:padding="6dp"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/txt_data_deliv_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13dp"
+                            android:padding="6dp"
+                            android:layout_weight="1"
+                            android:textStyle="bold"
+                            android:text=""
+                            android:textColor="#063844" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Created Date:   "
+                            android:textSize="12dp"
+                            android:layout_weight="1"
+                            android:padding="6dp"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/txt_data_cre_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13dp"
+                            android:padding="6dp"
+                            android:layout_weight="1"
+                            android:textStyle="bold"
+                            android:text=""
+                            android:textColor="#063844" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Product Count:     "
+                            android:textSize="12dp"
+                            android:padding="6dp"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/txt_data_items"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="13dp"
+                            android:textStyle="bold"
+                            android:padding="6dp"
+                            android:text=""
+                            android:textColor="#063844" />
+                    </LinearLayout>
+                </LinearLayout>
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:visibility="invisible"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/button" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                >
+
+                <Button
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_bottom"
+                    android:drawableTop="@drawable/cancel"
+                    android:padding="5dp"
+                    android:drawableTint="@android:color/white"
+                    android:text="Cancel"
+                    android:onClick="newCancelPressed"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp" />
+                <Button
+                    android:id="@+id/btn_next"
+                    android:enabled="false"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_bottom"
+                    android:drawableTop="@drawable/next"
+                    android:padding="5dp"
+                    android:drawableTint="@android:color/white"
+                    android:text="Next"
+                    android:onClick="NextPressed"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/form_background"
+    tools:context=".Wh_rcv_po">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/lbl_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="20dp"
+                    android:text="Warehouse Reception"
+                    android:textColor="#063844"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="10"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/txt_po_no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/form_input_field_sm"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:hint="Order Number"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:text="" />
+
+                    <ImageButton
+                        android:layout_gravity="bottom"
+                        android:layout_width="40dp"
+                        android:background="@drawable/button_bottom"
+                        android:src="@drawable/clear_white"
+                        android:layout_height="40dp"
+                        android:padding="5dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentLeft="true"
+                        android:onClick="clearPressed"
+                        android:scaleType="fitCenter"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="invisible"
+                    android:id="@+id/layout_order_data"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="fill_parent"
+                    android:background="@drawable/card_art_data"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Warehouse: "
+                            android:textSize="12dp"
+                            android:padding="6dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"/>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/form_input_field_sm"
+                            android:id="@+id/txt_wh_code"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="6dp"
+                            android:textStyle="bold"
+                            android:textSize="13dp"
+                            android:layout_weight="1"
+                            android:text=""
+                            android:textColor="#063844" />
+                        <TextView
+                            android:layout_marginLeft="3dp"
+                            android:background="@drawable/form_input_field_sm"
+                            android:id="@+id/txt_cc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="6dp"
+                            android:textStyle="bold"
+                            android:textSize="13dp"
+                            android:layout_weight="1"
+                            android:text=""
+                            android:textColor="#063844" />
+                    </LinearLayout>
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/form_input_field_sm"
+                        android:id="@+id/txt_wh_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="6dp"
+                        android:textStyle="bold"
+                        android:textSize="13dp"
+                        android:layout_weight="1"
+                        android:text=""
+                        android:textColor="#063844" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Site: "
+                            android:textSize="12dp"
+                            android:padding="6dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"/>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/form_input_field_sm"
+                            android:id="@+id/txt_site_code"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="6dp"
+                            android:textStyle="bold"
+                            android:textSize="13dp"
+                            android:layout_weight="1"
+                            android:text=""
+                            android:textColor="#063844" />
+                        <TextView
+                            android:layout_marginLeft="3dp"
+                            android:background="@drawable/form_input_field_sm"
+                            android:id="@+id/txt_site_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="6dp"
+                            android:textStyle="bold"
+                            android:textSize="13dp"
+                            android:layout_weight="1"
+                            android:text=""
+                            android:textColor="#063844" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:text="Order Date: "
+                                android:textSize="12dp"
+                                android:layout_weight="1"
+                                android:padding="6dp"
+                                android:layout_height="wrap_content"/>
+                            <TextView
+                                android:layout_marginLeft="10dp"
+                                android:background="@drawable/form_input_field_sm"
+                                android:id="@+id/txt_ord_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="13dp"
+                                android:padding="6dp"
+                                android:layout_weight="1"
+                                android:textStyle="bold"
+                                android:text=""
+                                android:textColor="#063844" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:text="Delivery Date:     "
+                                android:textSize="12dp"
+                                android:padding="6dp"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:layout_marginLeft="10dp"
+                                android:background="@drawable/form_input_field_sm"
+                                android:id="@+id/txt_deliv_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="13dp"
+                                android:textStyle="bold"
+                                android:padding="6dp"
+                                android:text=""
+                                android:textColor="#063844" />
+                        </LinearLayout>
+                    </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="Order Status:     "
+                            android:textSize="12dp"
+                            android:padding="6dp"
+                            android:layout_height="wrap_content"/>
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_marginLeft="10dp"
+                                android:background="@drawable/form_input_field_sm"
+                                android:id="@+id/txt_order_status_num"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="13dp"
+                                android:textStyle="bold"
+                                android:padding="6dp"
+                                android:text=""
+                                android:textColor="#063844" />
+                            <TextView
+                                android:layout_marginLeft="3dp"
+                                android:background="@drawable/form_input_field_sm"
+                                android:id="@+id/txt_order_status"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="13dp"
+                                android:textStyle="bold"
+                                android:padding="6dp"
+                                android:text=""
+                                android:textColor="#063844" />
+                        </LinearLayout>
+
+                </LinearLayout>
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:visibility="invisible"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/button" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                >
+
+                <Button
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_bottom"
+                    android:drawableTop="@drawable/cancel"
+                    android:padding="5dp"
+                    android:drawableTint="@android:color/white"
+                    android:text="Cancel"
+                    android:onClick="newCancelPressed"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp" />
+                <Button
+                    android:id="@+id/btn_next"
+                    android:enabled="false"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_bottom"
+                    android:drawableTop="@drawable/next"
+                    android:padding="5dp"
+                    android:drawableTint="@android:color/white"
+                    android:text="Next"
+                    android:onClick="NextPressed"
+                    android:layout_marginBottom="5dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+</android.support.constraint.ConstraintLayout>
