@@ -125,7 +125,7 @@ public class BarcodeGen extends AppCompatActivity {
 
         db = openOrCreateDatabase("imanpro", MODE_PRIVATE, null);
         Cursor cursor = db.rawQuery("select * from server_ip", null);
-        if (cursor.getCount() > 0) {
+        if (cursor.getCount() > 0) { 
             cursor.moveToFirst();
             for (int i = 0; i < cursor.getCount(); i++) {
                 String vodafone_server = cursor.getString(cursor.getColumnIndex("vodafone_server"));
