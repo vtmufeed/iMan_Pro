@@ -132,7 +132,7 @@ public class BarcodeGen extends AppCompatActivity {
                 SOAP_ADDRESS = vodafone_server + "/vfBarcodeGenerator/Service.asmx";
             }
         }
-
+/**/
         final EditText edittext = (EditText) findViewById(R.id.txt_price);
         edittext.setOnKeyListener(new OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
