@@ -42,6 +42,7 @@ import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
+import java.nio.channels.ClosedSelectorException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -173,7 +174,7 @@ public class LoginActivity extends AppCompatActivity {
             for (int i = 0; i < cursor.getCount(); i++) {
                 String[] ips = (cursor.getString(cursor.getColumnIndex("ip")).split("/"));
                 String ip = ips[0];
-                String terminal_id =cursor.getString(cursor.getColumnIndex("terminal_id"));
+                String terminal_id = cursor.getString(cursor.getColumnIndex("terminal_id"));
                 SOAP_ADDRESS = "http://" + ip + "/iManWebService/Service.asmx";
                 titleBox.setText(cursor.getString(cursor.getColumnIndex("ip")));
                 edt_terminal.setText(terminal_id);
@@ -196,7 +197,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 String m_Text = titleBox.getText().toString();
                 String terminal_id = edt_terminal.getText().toString();
-                if(m_Text.length()>0 && terminal_id.length()>0) {
+                if (m_Text.length() > 0 && terminal_id.length() > 0) {
                     //Toast.makeText(getApplicationContext(),m_Text,LENGTH_SHORT).show();
                     Cursor cursor = db.rawQuery("select * from server_ip", null);
                     int flag = 0;
@@ -205,10 +206,8 @@ public class LoginActivity extends AppCompatActivity {
                     else
                         db.execSQL("insert into server_ip(ip,terminal_id,upload_mode) values('" + m_Text + "'," + terminal_id + ",'QR Code')");
                     cursor.close();
-                }
-                else
-                {
-                    Toast.makeText(getApplicationContext(),"Please Enter All Fields",LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Please Enter All Fields", LENGTH_SHORT).show();
                 }
             }
         });
@@ -234,26 +233,35 @@ public class LoginActivity extends AppCompatActivity {
         EditText edt = (EditText) findViewById(R.id.txt_user);
         String p_user = edt.getText().toString().toUpperCase();
         if (p_user.equals("VODAFONE")) {
-            Intent intent = new Intent(getApplicationContext(), BarcodeGen.class);
-            startActivity(intent);
-        }
-        else if (p_user.equals("OFFLINE")) {
+            if (isNetworkAvailable()) {
+                Cursor cursor = db.rawQuery("select * from server_ip", null);
+                if (cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+                    String loc = cursor.getString(cursor.getColumnIndex("loc"));
+                    String vodafone_server = cursor.getString(cursor.getColumnIndex("vodafone_server"));
+                    if (loc != null && vodafone_server != null && loc.length() > 0 && vodafone_server.length() > 0) {
+                        Intent intent = new Intent(getApplicationContext(), BarcodeGen.class);
+                        startActivity(intent);
+                    } else
+                        Toast.makeText(this, "Site or Server Address is Not Available", LENGTH_SHORT).show();
+                } else
+                    Toast.makeText(this, "Site is Not Available", LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "NetWork is Not Available", LENGTH_SHORT).show();
+            }
+        } else if (p_user.equals("OFFLINE")) {
             Cursor cursor = db.rawQuery("select * from server_ip", null);
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 String terminal_id = cursor.getString(cursor.getColumnIndex("terminal_id"));
-                if(terminal_id.length()>0) {
+                if (terminal_id.length() > 0) {
                     gotoInventoryNew(p_user);
-                }
-                else
-                {
-                    Toast.makeText(getApplicationContext(),"Terminal ID Not Found",LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Terminal ID Not Found", LENGTH_SHORT).show();
                     cursor.close();
                 }
-            }
-            else
-            {
-                Toast.makeText(getApplicationContext(),"Terminal ID Not Found",LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getApplicationContext(), "Terminal ID Not Found", LENGTH_SHORT).show();
                 cursor.close();
             }
         } else {
@@ -268,17 +276,15 @@ public class LoginActivity extends AppCompatActivity {
                     for (int i = 0; i < cursor.getCount(); i++) {
                         String[] ips = (cursor.getString(cursor.getColumnIndex("ip")).split("/"));
                         String terminal_id = cursor.getString(cursor.getColumnIndex("terminal_id"));
-                        if(terminal_id.length()>0) {
+                        if (terminal_id.length() > 0) {
                             String ip = ips[0];
                             cursor.close();
                             SOAP_ADDRESS = "http://" + ip + "/iManWebService/Service.asmx";
                             OPERATION_NAME = "appLogin";
                             cursor.close();
                             new MyTask().execute(p_user, p_pass);
-                        }
-                        else
-                        {
-                            Toast.makeText(getApplicationContext(),"Terminal ID Not Found",LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Terminal ID Not Found", LENGTH_SHORT).show();
                         }
                     }
                 } else {
@@ -380,7 +386,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 envelope.setOutputSoapObject(request);
 
-                HttpTransportSE httpTransport = new HttpTransportSE(SOAP_ADDRESS,15000);
+                HttpTransportSE httpTransport = new HttpTransportSE(SOAP_ADDRESS, 15000);
                 System.out.println(SOAP_ADDRESS);
 
                 try {

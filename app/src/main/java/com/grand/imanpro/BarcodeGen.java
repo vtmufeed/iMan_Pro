@@ -87,6 +87,7 @@ public class BarcodeGen extends AppCompatActivity {
     private ImageView imageViewResult;
     TextView txtv_ret_bar;
     TextView txtv_ret_price;
+    String vodafone_server;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -128,7 +129,8 @@ public class BarcodeGen extends AppCompatActivity {
         if (cursor.getCount() > 0) { 
             cursor.moveToFirst();
             for (int i = 0; i < cursor.getCount(); i++) {
-                String vodafone_server = cursor.getString(cursor.getColumnIndex("vodafone_server"));
+                loc = cursor.getString(cursor.getColumnIndex("loc"));
+                vodafone_server = cursor.getString(cursor.getColumnIndex("vodafone_server"));
                 SOAP_ADDRESS = vodafone_server + "/vfBarcodeGenerator/Service.asmx";
             }
         }
@@ -136,22 +138,28 @@ public class BarcodeGen extends AppCompatActivity {
         final EditText edittext = (EditText) findViewById(R.id.txt_price);
         edittext.setOnKeyListener(new OnKeyListener() {
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                imageViewResult.setImageDrawable(null);
-                TextView txtv=(TextView)findViewById(R.id.txt_ret_bar);
-                txtv.setText("");
-                txtv=(TextView)findViewById(R.id.txt_ret_price);
-                txtv.setText("");
-                // If the event is a key-down event on the "enter" button
-                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
-                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                    if (!edittext.getText().toString().isEmpty()) {
-                        OPERATION_NAME = "generateBarcode";
-                        String price = edittext.getText().toString();
-                        new MyTask().execute(price);
-                        //Toast.makeText(getApplicationContext(),"sdadsad",LENGTH_SHORT).show();
+                    imageViewResult.setImageDrawable(null);
+                    TextView txtv = (TextView) findViewById(R.id.txt_ret_bar);
+                    txtv.setText("");
+                    txtv = (TextView) findViewById(R.id.txt_ret_price);
+                    txtv.setText("");
+                    // If the event is a key-down event on the "enter" button
+                    if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+                            (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                        if (!edittext.getText().toString().isEmpty()) {
+                            if(vodafone_server==null ||vodafone_server.length()<=0||loc==null ||loc.length()<=0 )
+                            {
+                                Toast.makeText(getApplicationContext(),"Server IP or Site is Not Found",LENGTH_SHORT).show();
+                            }
+                            else {
+                                OPERATION_NAME = "generateBarcode";
+                                String price = edittext.getText().toString();
+                                new MyTask().execute(price);
+                            }
+                            //Toast.makeText(getApplicationContext(),"sdadsad",LENGTH_SHORT).show();
+                        }
+                        return true;
                     }
-                    return true;
-                }
                 return false;
             }
         });
@@ -191,6 +199,12 @@ public class BarcodeGen extends AppCompatActivity {
                 pi.setName("p_price");
                 pi.setType(String.class);
                 pi.setValue(params[0]);
+                request.addProperty(pi);
+
+                pi = new PropertyInfo();
+                pi.setName("site");
+                pi.setType(String.class);
+                pi.setValue(loc);
                 request.addProperty(pi);
 
                 SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
