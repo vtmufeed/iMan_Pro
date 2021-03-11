@@ -371,6 +371,11 @@ public class MainActivity extends AppCompatActivity {
                                             intent.putExtra("user", user);
                                             startActivity(intent);
                                         }
+                                        if (menu_id.replace(".0", "").equals("13")) {
+                                            Intent intent = new Intent(getApplicationContext(), PeopleCount.class);
+                                            intent.putExtra("user", user);
+                                            startActivity(intent);
+                                        }
                                         System.out.println("The index is" + index);
                                     }
                                 });

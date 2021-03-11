@@ -108,7 +108,7 @@ public class LoginActivity extends AppCompatActivity {
         edt_user = (EditText) findViewById(R.id.txt_user);
         edt_user.requestFocus();
         db = openOrCreateDatabase("imanpro", MODE_PRIVATE, null);
-        db.execSQL("CREATE TABLE IF NOT EXISTS server_ip(ip varchar (20),loc varchar(10),loc_name varchar(100),terminal_id varchar(10),upload_mode varchar(50),vodafone_server varchar(70))");
+        db.execSQL("CREATE TABLE IF NOT EXISTS server_ip(ip varchar (20),loc varchar(10),loc_name varchar(100),terminal_id varchar(10),upload_mode varchar(50),vodafone_server varchar(70),people_strength varchar(70))");
         db.execSQL("CREATE TABLE IF NOT EXISTS current_user(id varchar (30),name varchar (60),type varcahr2(1),invent_type varcahr2(1), offline integer)");
         db.execSQL("CREATE TABLE IF NOT EXISTS Inventory(slno NUMERIC, barcode varchar2(200), gold_code VARCHAR(10),SU VARCHAR(10),P_DESC VARCHAR(50),SYS_QTY VARCHAR(10),PHY_QTY VARCHAR(10),VAR_QTY VARCHAR(10),VAR_VAL VARCHAR(100))");
         db.execSQL("CREATE TABLE IF NOT EXISTS Transfer(slno NUMERIC, TRD_BARCODE varchar(20),TRD_ART_CODE varchar(6),TRD_STOCK_SU varchar2(2),TRD_DESCRIPTION varchar(50),TRD_BARCODE_CONV varchar(3),TRD_QTY varchar2(20),TRD_UNIT_COST varchar2(10),TRD_AMOUNT varchar(20))");
@@ -233,22 +233,22 @@ public class LoginActivity extends AppCompatActivity {
         EditText edt = (EditText) findViewById(R.id.txt_user);
         String p_user = edt.getText().toString().toUpperCase();
         if (p_user.equals("VODAFONE")) {
-            if (isNetworkAvailable()) {
+           /* if (isNetworkAvailable()) {
                 Cursor cursor = db.rawQuery("select * from server_ip", null);
                 if (cursor.getCount() > 0) {
                     cursor.moveToFirst();
                     String loc = cursor.getString(cursor.getColumnIndex("loc"));
                     String vodafone_server = cursor.getString(cursor.getColumnIndex("vodafone_server"));
-                    if (loc != null && vodafone_server != null && loc.length() > 0 && vodafone_server.length() > 0) {
+                    if (loc != null && vodafone_server != null && loc.length() > 0 && vodafone_server.length() > 0) {*/
                         Intent intent = new Intent(getApplicationContext(), BarcodeGen.class);
-                        startActivity(intent);
+                        startActivity(intent);/*
                     } else
                         Toast.makeText(this, "Site or Server Address is Not Available", LENGTH_SHORT).show();
                 } else
                     Toast.makeText(this, "Site is Not Available", LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, "NetWork is Not Available", LENGTH_SHORT).show();
-            }
+            }*/
         } else if (p_user.equals("OFFLINE")) {
             Cursor cursor = db.rawQuery("select * from server_ip", null);
             if (cursor.getCount() > 0) {

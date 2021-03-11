@@ -154,7 +154,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Invento v1.2.8"
+                            android:text="Invento v1.2.9"
                             android:textColor="#000000"
                             android:layout_weight="1"
                             android:gravity="bottom"

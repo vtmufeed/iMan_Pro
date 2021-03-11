@@ -51,6 +51,7 @@ public class Settings extends AppCompatActivity {
                 String terminal_id = cursor.getString(cursor.getColumnIndex("terminal_id"));
                 String upload_mode = cursor.getString(cursor.getColumnIndex("upload_mode"));
                 String vodafone_server = cursor.getString(cursor.getColumnIndex("vodafone_server"));
+                String people_strength = cursor.getString(cursor.getColumnIndex("people_strength"));
                 Spinner spinner=(Spinner)findViewById(R.id.spinner_upload_modes);
                 if(upload_mode.length()<=0||upload_mode.equals("QR Code"))
                     spinner.setSelection(0);
@@ -60,6 +61,8 @@ public class Settings extends AppCompatActivity {
                 edt.setText(terminal_id);
                 edt=(EditText)findViewById(R.id.txt_vodafone_server);
                 edt.setText(vodafone_server);
+                edt=(EditText)findViewById(R.id.txt_people_strength);
+                edt.setText(people_strength);
                 String ip=ips[0];
                 edt=(EditText)findViewById(R.id.txt_serverip);
                 edt.setText(cursor.getString(cursor.getColumnIndex("ip")));
@@ -92,6 +95,8 @@ public class Settings extends AppCompatActivity {
         String vodafone_server=edt.getText().toString();
         edt=(EditText)findViewById(R.id.txt_terminal_id);
         String terminal_id=edt.getText().toString();
+        edt=(EditText)findViewById(R.id.txt_people_strength);
+        String people_strength=edt.getText().toString();
         //edt=(EditText)findViewById(R.id.txt_loc);
         Spinner spinner=(Spinner)findViewById(R.id.spinner_settings_loc);
         String loc_name=spinner.getSelectedItem().toString();
@@ -102,7 +107,7 @@ public class Settings extends AppCompatActivity {
         }
         else {
             String loc = loc_name.split("-")[0].trim();
-            db.execSQL("insert into server_ip (ip,loc,terminal_id,upload_mode,vodafone_server) values('" + ip + "','" + loc + "','"+terminal_id+"','"+upload_mode+"','"+vodafone_server+"')");
+            db.execSQL("insert into server_ip (ip,loc,terminal_id,upload_mode,vodafone_server,people_strength) values('" + ip + "','" + loc + "','"+terminal_id+"','"+upload_mode+"','"+vodafone_server+"','"+people_strength+"')");
             Toast toast = Toast.makeText(this, "Saved Successfully", Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0);
             toast.show();
